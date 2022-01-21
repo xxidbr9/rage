@@ -16,7 +16,7 @@ My daily routine implement Atomic Pattern to the react app, i was doing that rep
 
 ##### Misc
 - [ ] Create StoryBook For Each Components when it use the flags --story, -s
-- [ ] Craete Test file with --test, -t flags
+- [ ] Create Test file with --test, -t flags
 - [ ] Show Version --version, -v
 - [ ] Use Javascript instead of typescript --js
 
