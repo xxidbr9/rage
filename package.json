@@ -1,0 +1,23 @@
+{
+    "name": "@xxidbr9/rage",
+    "version": "0.1.0",
+    "description": "RAGE (React Atomic Generator)",
+    "main": "index.js",
+    "repository": "https://github.com/xxidbr9/rage.git",
+    "author": "Barnando Akbarto Hidayatullah <barnando13@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "postinstall": "go-npm install",
+        "preuninstall": "go-npm uninstall"
+    },
+    "goBinary": {
+        "name": "rage",
+        "path": "./bin",
+        "url": "https://github.com/xxidbr9/rage/releases/download/v{{version}}/rage_{{version}}_{{platform}}_{{arch}}.tar.gz"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "go-npm": "^0.1.9"
+    }
+}
