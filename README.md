@@ -1,7 +1,7 @@
 ## RAGE (React Atomic Generator)
 
 ### Purpose
-My daily routine implement Atomic Pattern to the react app, i was doing that repeatedly, so the reason to me create this package is for help me work every day.
+My daily routine implements Atomic Pattern to the react app, I was doing that repeatedly, so the reason I create this package is to help me work every day.
 
 
 #### TODO
