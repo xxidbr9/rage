@@ -14,14 +14,14 @@ import (
 
 // initCmd represents the init command
 var componentsOutDir string = "./src/components"
-var subFolder []string = []string{"atoms", "molecule", "organisms", "templates"}
+var subFolder []string = []string{ToPlural(AtomComp), ToPlural(MoleculeComp), ToPlural(Organism), ToPlural(Template)}
 
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Initial Components Projects",
 	// TODO
 	Long: ``,
-	Run:  runner,
+	Run:  initCmdRunner,
 }
 
 func init() {
@@ -29,7 +29,7 @@ func init() {
 	initCmd.Flags().StringVarP(&componentsOutDir, "out", "o", componentsOutDir, "location for components")
 }
 
-func runner(cmd *cobra.Command, args []string) {
+func initCmdRunner(cmd *cobra.Command, args []string) {
 	var h _handler
 	out := "Initialzing atomic components on"
 	if componentsOutDir != "" {

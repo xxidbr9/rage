@@ -5,10 +5,41 @@ Copyright © 2022 Barnando Akbarto Hidayatullah <barnando13@gmail.com>
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
 )
+
+type ComponentsType string
+
+const (
+	AtomComp     ComponentsType = "atom"
+	MoleculeComp ComponentsType = "molecule"
+	Organism     ComponentsType = "organism"
+	Template     ComponentsType = "template"
+)
+
+func (c ComponentsType) Validate() error {
+	switch c {
+	case AtomComp:
+	case MoleculeComp:
+	case Organism:
+	case Template:
+		return nil
+	default:
+		return fmt.Errorf("select between (%s|%s|%s|%s)", AtomComp, MoleculeComp, Organism, Template)
+	}
+	return nil
+}
+
+func (c *ComponentsType) ToPlural() string {
+	return string(*c) + "s"
+}
+
+func ToPlural(comp ComponentsType) string {
+	return string(comp) + "s"
+}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{

@@ -7,6 +7,7 @@ require github.com/spf13/cobra v1.3.0
 require github.com/spf13/viper v1.10.1
 
 require (
+	github.com/aymerick/raymond v2.0.2+incompatible // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect

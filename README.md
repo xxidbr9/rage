@@ -31,10 +31,10 @@ rage -h
 
 ##### COMPONENTS
 - [ ] rage create [-c | --component] {{COMPONENT_TYPE}} [--js] [--story | -s] [--name | -n | no flags] {{COMP_NAME}} 
-- [ ] Create Atoms Components
-- [ ] Create Molecules Components
-- [ ] Create Organisms Components
-- [ ] Create Templates Components
+- [X] Create Atoms Components
+- [X] Create Molecules Components
+- [X] Create Organisms Components
+- [X] Create Templates Components
 
 ##### Misc
 - [ ] Create StoryBook For Each Components when it use the flags --story, -s
