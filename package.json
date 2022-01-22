@@ -16,8 +16,7 @@
         "path": "./bin",
         "url": "https://github.com/xxidbr9/rage/releases/download/v{{version}}/rage_{{version}}_{{platform}}_{{arch}}.tar.gz"
     },
-    "dependencies": {},
-    "devDependencies": {
+    "dependencies": {
         "go-npm": "^0.1.9"
     }
 }
