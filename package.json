@@ -1,6 +1,6 @@
 {
     "name": "@xxidbr9/rage",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "RAGE (React Atomic Generator)",
     "main": "index.js",
     "repository": "https://github.com/xxidbr9/rage.git",
