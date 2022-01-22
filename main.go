@@ -30,7 +30,7 @@ func main() {
 
 	version := packageJson.Version
 	if version == "" {
-		version = "0.1.0" // todo
+		version = "0.1.2" // todo
 	}
 	cmd.Execute(version)
 }
