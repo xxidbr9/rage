@@ -8,3 +8,6 @@ install:
 
 uninstall:
 	go clean -i ${PKG_NAME}
+
+release:
+	goreleaser release --rm-dist
