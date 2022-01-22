@@ -4,8 +4,10 @@
 My daily routine implements Atomic Pattern to the react app, I was doing that repeatedly, so the reason I create this package is to help me work every day.
 
 
-#### TODO
+#### MAIN TODO
+- [ ] CI/CD
 
+#### TODO
 - [ ] Init Command
 - [ ] Check is react exist in package json
 - [ ] Use babel / vite and inject alias
