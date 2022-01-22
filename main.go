@@ -29,8 +29,5 @@ func main() {
 	viperConfig.Unmarshal(&packageJson)
 
 	version := packageJson.Version
-	if version == "" {
-		version = "0.1.2" // todo
-	}
 	cmd.Execute(version)
 }
