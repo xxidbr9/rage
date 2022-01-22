@@ -7,8 +7,14 @@ My daily routine implements Atomic Pattern to the react app, I was doing that re
 #### TODO
 
 - [ ] Init Command
+- [ ] Check is react exist in package json
+- [ ] Use babel / vite and inject alias
+- [ ] Add alias to tsconfig.json
+- [ ] Read to rage.config.[js|json] / .ragerc as a json
+- [ ] Use Template folder when it exist
 
 ##### COMPONENTS
+- [ ] rage create [-c | --component] {{COMPONENT_TYPE}} [--js] [--story | -s] [--name | -n | no flags] {{COMP_NAME}} 
 - [ ] Create Atoms Components
 - [ ] Create Molecules Components
 - [ ] Create Organisms Components
