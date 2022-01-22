@@ -57,20 +57,12 @@ func CreatePatternComponent(dir, storedLocation, componentName string) error {
 	templateLocation := filepath.Join(dir, "shared", "templates", "components.hbs")
 	storedFile := filepath.Join(storedLocation, componentName+".tsx")
 
-	errs := make(chan error)
-
-	go (func() {
-		if err := createJSXComponents(dir, templateLocation, storedFile, componentName); err != nil {
-			<-errs
-		}
-	})()
-	
-	if err := createIndexComponents(dir, storedLocation, componentName); err != nil {
+	if err := createJSXComponents(dir, templateLocation, storedFile, componentName); err != nil {
 		return err
 	}
 
-	if len(errs) > 0 {
-		return <-errs
+	if err := createIndexComponents(dir, storedLocation, componentName); err != nil {
+		return err
 	}
 
 	return nil
