@@ -6,9 +6,8 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 
-	jsoniter "github.com/json-iterator/go"
+	"github.com/spf13/viper"
 	"github.com/xxidbr9/rage/cmd"
 )
 
@@ -16,19 +15,18 @@ func main() {
 	type PackageJson struct {
 		Version string `json:"version"`
 	}
-
-	jsonFile, err := ioutil.ReadFile("./package.json")
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	packageJson := PackageJson{}
 
-	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	err = json.Unmarshal(jsonFile, &packageJson)
+	viperConfig := viper.New()
+	viperConfig.AddConfigPath(".")
+	viperConfig.SetConfigType("json")
+	viperConfig.SetConfigName("package")
+	err := viperConfig.ReadInConfig()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}
+	viper.AutomaticEnv()
+	viperConfig.Unmarshal(&packageJson)
 
 	cmd.Execute(packageJson.Version)
 }
