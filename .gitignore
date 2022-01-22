@@ -153,3 +153,4 @@ dist
 # Go workspace file
 go.work
 dist/
+bin/
