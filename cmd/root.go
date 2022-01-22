@@ -18,15 +18,8 @@ var rootCmd = &cobra.Command{
 My daily routine implement Atomic Pattern to the react app
 i was doing that repeatedly and i want to make my life easier
 so the reason to me create this package is for help me work every day`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	Run: func(cmd *cobra.Command, args []string) { 
-
-	},
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute(version string) {
 	rootCmd.Version = version
 	err := rootCmd.Execute()
@@ -36,14 +29,5 @@ func Execute(version string) {
 }
 
 func init() {
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.rage.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.Flags().BoolP("version", "v", false, "Show Version")
 }

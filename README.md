@@ -4,6 +4,20 @@
 My daily routine implements Atomic Pattern to the react app, I was doing that repeatedly, so the reason I create this package is to help me work every day.
 
 
+### Installation
+**NPM**
+```bash
+npm i -g @xxidbr9/rage
+```
+**Yarn**
+```bash
+yarn global add @xxidbr9/rage
+```
+
+### How To Run
+```bash
+rage -h
+```
 #### MAIN TODO
 - [ ] CI/CD
 
@@ -25,7 +39,7 @@ My daily routine implements Atomic Pattern to the react app, I was doing that re
 ##### Misc
 - [ ] Create StoryBook For Each Components when it use the flags --story, -s
 - [ ] Create Test file with --test, -t flags
-- [ ] Show Version --version, -v
+- [X] Show Version --version, -v
 - [ ] Use Javascript instead of typescript --js
 
 

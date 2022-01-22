@@ -5,12 +5,11 @@ Copyright © 2022 Barnando Akbarto Hidayatullah <barnando13@gmail.com>
 package cmd
 
 import (
-	"errors"
 	"fmt"
-	"os"
 	"path/filepath"
 
 	"github.com/spf13/cobra"
+	"github.com/xxidbr9/rage/shared/helpers"
 )
 
 // initCmd represents the init command
@@ -22,23 +21,7 @@ var initCmd = &cobra.Command{
 	Short: "Initial Components Projects",
 	// TODO
 	Long: ``,
-	Run: func(cmd *cobra.Command, args []string) {
-		out := "Initialzing atomic components on"
-		if componentsOutDir != "" {
-			fmt.Printf("%s \"%s\"\n", out, componentsOutDir)
-			err := createNewFolder(componentsOutDir)
-			if err != nil {
-				fmt.Println(err)
-			}
-			fmt.Printf("Successfully creating \"%s\"\n", componentsOutDir)
-			for _, item := range subFolder {
-				path := filepath.Join(componentsOutDir, item)
-				createSubFolder(path)
-			}
-		} else {
-			fmt.Printf("%s \"src/components\"", out)
-		}
-	},
+	Run:  runner,
 }
 
 func init() {
@@ -46,58 +29,33 @@ func init() {
 	initCmd.Flags().StringVarP(&componentsOutDir, "out", "o", componentsOutDir, "location for components")
 }
 
-func createNewFolder(dir string) error {
-	pwd, err := os.Getwd()
-	location := filepath.Join(pwd, dir)
-	err = os.MkdirAll(location, 0755)
-
-	if err == nil {
-		return nil
-	}
-	if os.IsNotExist(err) {
-		if _, err := os.Stat(location); os.IsNotExist(err) {
-			os.Mkdir(location, 0755)
-		}
-	}
-	if os.IsExist(err) {
-		// check that the existing path is a directory
-		info, err := os.Stat(dir)
+func runner(cmd *cobra.Command, args []string) {
+	var h _handler
+	out := "Initialzing atomic components on"
+	if componentsOutDir != "" {
+		fmt.Printf("%s \"%s\"\n", out, componentsOutDir)
+		err := h.createNewFolder(componentsOutDir)
 		if err != nil {
-			return err
+			fmt.Println(err)
 		}
-		if !info.IsDir() {
-			return errors.New("already exists but is not a directory")
+		fmt.Printf("Successfully creating \"%s\"\n", componentsOutDir)
+		for _, item := range subFolder {
+			path := filepath.Join(componentsOutDir, item)
+			h.createNewFolder(path)
 		}
-		return nil
+	} else {
+		fmt.Printf("%s \"src/components\"", out)
 	}
-
-	return err
 }
 
-func createSubFolder(dir string) error {
-	pwd, err := os.Getwd()
-	location := filepath.Join(pwd, dir)
-	err = os.MkdirAll(location, 0755)
+type _handler struct{}
 
-	if err == nil {
-		return nil
-	}
-	if os.IsNotExist(err) {
-		if _, err := os.Stat(location); os.IsNotExist(err) {
-			os.Mkdir(location, 0755)
-		}
-	}
-	if os.IsExist(err) {
-		// check that the existing path is a directory
-		info, err := os.Stat(dir)
-		if err != nil {
-			return err
-		}
-		if !info.IsDir() {
-			return errors.New("already exists but is not a directory")
-		}
-		return nil
-	}
-
-	return err
+func (h _handler) createNewFolder(dir string) error {
+	return helpers.CreateFolder(dir)
 }
+
+// TODO
+func (h _handler) generateInitFile() {}
+
+// TODO
+func (h _handler) checkConfig() {}
