@@ -6,10 +6,11 @@ import (
 	"path/filepath"
 
 	"github.com/aymerick/raymond"
+	"github.com/xxidbr9/rage/shared/templates"
 )
 
 // Todo
-func createJSXComponents(dir, templateLocation, storedFile, componentsName string) error {
+func createJSXComponents(dir, storedFile, template, componentsName string) error {
 	/*
 		? TODO
 		[ ] Add extension params
@@ -17,17 +18,17 @@ func createJSXComponents(dir, templateLocation, storedFile, componentsName strin
 	*/
 
 	// Read Template
-	templateFile, err := ioutil.ReadFile(templateLocation)
-	if err != nil {
-		return err
-	}
+	// templateFile, err := ioutil.ReadFile(templateLocation)
+	// if err != nil {
+	// 	return err
+	// }
 
 	// Render
 	ctx := map[string]string{
 		"ComponentsName": componentsName,
 	}
 
-	result, err := raymond.Render(string(templateFile), ctx)
+	result, err := raymond.Render(template, ctx)
 	if err != nil {
 		panic("Please report a bug :)")
 	}
@@ -44,24 +45,27 @@ func CreateReadme() error {
 }
 
 // Todo
-func createIndexComponents(dir, storedLocation, componentName string) error {
-	templateLocation := filepath.Join(dir, "shared", "templates", "index_components.hbs")
+func createIndexComponents(dir, storedLocation, template, componentName string) error {
+	// templateLocation := filepath.Join(dir, "shared", "templates", "index_components.hbs")
 	storedFile := filepath.Join(storedLocation, "index.tsx")
 
-	return createJSXComponents(dir, templateLocation, storedFile, componentName)
+	return createJSXComponents(dir, storedFile, template, componentName)
 
 }
 
 // TODO
 func CreatePatternComponent(dir, storedLocation, componentName string) error {
-	templateLocation := filepath.Join(dir, "shared", "templates", "components.hbs")
+	// templateLocation := filepath.Join(dir, "shared", "templates", "components.hbs")
 	storedFile := filepath.Join(storedLocation, componentName+".tsx")
 
-	if err := createJSXComponents(dir, templateLocation, storedFile, componentName); err != nil {
+	componentTemplate := templates.ComponentsJSX
+	indexTemplate := templates.IndexJSX
+
+	if err := createJSXComponents(dir, storedFile, componentTemplate, componentName); err != nil {
 		return err
 	}
 
-	if err := createIndexComponents(dir, storedLocation, componentName); err != nil {
+	if err := createIndexComponents(dir, storedLocation, indexTemplate, componentName); err != nil {
 		return err
 	}
 
