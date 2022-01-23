@@ -19,7 +19,7 @@ export default {{ComponentsName}}
 `
 
 var IndexJSX =`
-import {{ComponentsName}} from '{{ComponentsName}}'
+import {{ComponentsName}} from './{{ComponentsName}}'
 
 export default {{ComponentsName}}
 ` 
