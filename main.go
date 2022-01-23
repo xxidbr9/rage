@@ -5,11 +5,9 @@ Copyright © 2022 Barnando Akbarto Hidayatullah <barnando13@gmail.com>
 package main
 
 import (
-	"fmt"
 	"os/exec"
 	"strings"
 
-	"github.com/spf13/viper"
 	"github.com/xxidbr9/rage/cmd"
 )
 
@@ -19,16 +17,16 @@ func main() {
 	}
 	var packageJson PackageJson
 
-	viperConfig := viper.New()
-	viperConfig.AddConfigPath(".")
-	viperConfig.SetConfigType("json")
-	viperConfig.SetConfigName("package")
-	err := viperConfig.ReadInConfig()
-	if err != nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
-	}
-	viper.AutomaticEnv()
-	viperConfig.Unmarshal(&packageJson)
+	// viperConfig := viper.New()
+	// viperConfig.AddConfigPath(".")
+	// viperConfig.SetConfigType("json")
+	// viperConfig.SetConfigName("package")
+	// err := viperConfig.ReadInConfig()
+	// if err != nil {
+	// 	fmt.Println("Using config file:", viper.ConfigFileUsed())
+	// }
+	// viper.AutomaticEnv()
+	// viperConfig.Unmarshal(&packageJson)
 
 	var version string
 	if packageJson.Version == "" {
