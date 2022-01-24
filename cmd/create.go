@@ -7,7 +7,6 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 
@@ -35,16 +34,16 @@ func init() {
 }
 
 func createCmdRunner(cmd *cobra.Command, args []string) {
-	var componentName string
 	var componentClassify ComponentsType
+	componentsName := make([]string, 0)
 
 	if CompName != "" {
-		componentName = CompName
+		componentsName = append(componentsName, CompName)
 	} else {
 		if len(args) == 0 {
-			log.Panicln(errors.New("require name"))
+			fmt.Println(errors.New("require name"))
 		} else {
-			componentName = args[len(args)-1]
+			componentsName = append(componentsName, args...)
 		}
 	}
 
@@ -53,23 +52,25 @@ func createCmdRunner(cmd *cobra.Command, args []string) {
 	}
 
 	if err := componentClassify.Validate(); err != nil {
-		panic(fmt.Errorf("components classifier are required %s", err))
+		fmt.Println(fmt.Errorf("components classifier are required %s", err))
 	}
 
 	dir, err := os.Getwd()
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
-	storedLocation := filepath.Join(componentsOutDir, componentClassify.ToPlural(), componentName)
+	for _, componentName := range componentsName {
+		storedLocation := filepath.Join(componentsOutDir, componentClassify.ToPlural(), componentName)
 
-	// Create new Folder
-	if err = helpers.CreateFolder(storedLocation); err != nil {
-		panic(err)
-	}
+		// Create new Folder
+		if err = helpers.CreateFolder(storedLocation); err != nil {
+			fmt.Println(err)
+		}
 
-	if err = helpers.CreatePatternComponent(dir, storedLocation, componentName); err != nil {
-		panic(err)
+		if err = helpers.CreatePatternComponent(dir, storedLocation, componentName); err != nil {
+			fmt.Println(err)
+		}
 	}
 
 }
