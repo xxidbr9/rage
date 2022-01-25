@@ -10,4 +10,4 @@ uninstall:
 	go clean -i ${PKG_NAME}
 
 release:
-	goreleaser release --rm-dist
+	goreleaser release --rm-dist && npm publish
